@@ -1,0 +1,26 @@
+# services to enable
+[grpc.services.gateway]
+datagateway = "https://sciencemesh.softwaremind.com/iop/datagateway"
+[grpc.services.storageregistry]
+[grpc.services.storageprovider]
+data_server_url = "https://sciencemesh.softwaremind.com/iop/data"
+[grpc.services.authprovider]
+[grpc.services.authregistry]
+[grpc.services.userprovider]
+[grpc.services.usershareprovider]
+[grpc.services.publicshareprovider]
+[grpc.services.ocmcore]
+[grpc.services.ocmshareprovider]
+[grpc.services.ocminvitemanager]
+[grpc.services.ocmproviderauthorizer]
+
+[http.services.datagateway]
+[http.services.dataprovider]
+[http.services.prometheus]
+[http.services.ocmd]
+
+[http.services.ocmd.smtp_credentials]
+sender_mail = "sciencemesh@service.ailleron.com"
+sender_password = "A#&vBJ5p!c"
+smtp_server = "box.service.ailleron.com"
+smtp_port = 587
