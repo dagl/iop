@@ -33,5 +33,5 @@ data_server_url = "https://sciencemesh.softwaremind.com/iop/data"
 [http.services.ocmd.smtp_credentials]
 sender_mail = "sciencemesh@service.ailleron.com"
 sender_password = "A#&vBJ5p!c"
-smtp_server = "box.service.ailleron.com"
-smtp_port = 587
+smtp_server = "service.ailleron.com"
+smtp_port = 25

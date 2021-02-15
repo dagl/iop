@@ -1,0 +1,90 @@
+# services to enable
+[grpc.services.gateway]
+datagateway = "https://sciencemesh.softwaremind.com/iop/datagateway"
+commit_share_to_storage_grant = true
+commit_share_to_storage_ref = true
+appprovidersvc = "iop-gateway:19000"
+appregistry = "iop-gateway:19000"
+
+[grpc.services.appprovider]
+driver = "demo"
+wopiurl = "https://cs3mesh.softwaremind.com/"
+wopibridgeurl = "https://https://cs3mesh.softwaremind.com//wopib"
+
+[grpc.services.appregistry]
+driver = "static"
+
+[grpc.services.appregistry.static.rules]
+"text/markdown" = "iop-gateway:19000"
+"text/plain" = "iop-gateway:19000"
+"application/compressed-markdown" = "iop-gateway:19000"
+"application/vnd.oasis.opendocument.text" = "iop-gateway:19000"
+"application/vnd.oasis.opendocument.spreadsheet" = "iop-gateway:19000"
+"application/vnd.oasis.opendocument.presentation" = "iop-gateway:19000"
+
+[grpc.services.storageregistry]
+[grpc.services.storageregistry.drivers.static]
+home_provider = "/home"
+
+[grpc.services.storageregistry.drivers.static.rules]
+"/home" = "iop-storageprovider-home:17000"
+"/reva" = "iop-storageprovider-reva:18000"
+"123e4567-e89b-12d3-a456-426655440000" = "iop-storageprovider-reva:18000"
+
+[grpc.services.storageprovider]
+data_server_url = "https://sciencemesh.softwaremind.com/iop/data"
+
+[grpc.services.storageprovider.mimetypes]
+".zmd" = "application/compressed-markdown"
+
+[grpc.services.authprovider]
+[grpc.services.authregistry]
+[grpc.services.userprovider]
+[grpc.services.usershareprovider]
+[grpc.services.publicshareprovider]
+[grpc.services.ocmcore]
+[grpc.services.ocmshareprovider]
+[grpc.services.ocminvitemanager]
+
+[grpc.services.ocmproviderauthorizer]
+driver = "mentix"
+
+[grpc.services.ocmproviderauthorizer.drivers.mentix]
+url = "https://sciencemesh-test.uni-muenster.de/api/mentix/cs3"   # same for all providers
+verify_request_hostname = true
+insecure = false
+timeout = 10
+refresh = 900
+
+[http.middlewares.providerauthorizer]
+driver = "mentix"
+
+[http.middlewares.providerauthorizer.drivers.mentix]
+url = "https://sciencemesh-test.uni-muenster.de/api/mentix/cs3"   # same for all providers
+insecure = false
+timeout = 10
+refresh = 900
+
+[http.services.datagateway]
+[http.services.dataprovider]
+[http.services.ocdav]
+[http.services.ocmd]
+mesh_directory_url = "https://sciencemesh.cesnet.cz/iop/meshdir"   # same for all providers
+
+#[http.services.metrics]
+#metrics_data_driver_type = "dummy"
+#metrics_record_interval = 5000
+[http.services.prometheus]
+
+[http.services.metrics]
+metrics_data_driver_type = "xcloud"
+metrics_record_interval = 5000
+xcloud_instance="https://owncloud.softwaremind.com"
+xcloud_interval=5
+xcloud_catalog='https://sciencemesh-test.uni-muenster.de/api/mentix/sites?action=register'
+
+[http.services.ocmd.smtp_credentials]
+sender_mail = "sciencemesh@service.ailleron.com"
+sender_password = "A#&vBJ5p!c"
+smtp_server = "service.ailleron.com"
+smtp_port = 25
